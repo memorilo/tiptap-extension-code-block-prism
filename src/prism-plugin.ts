@@ -53,14 +53,14 @@ function getDecorations({
 
         let normalizedTokens: Token[][];
 
-        try{
-            if(!registeredLang(language)) {
-                import("prismjs/components/prism-"+language);
+        try {
+            if (!registeredLang(language)) {
+                import("prismjs/components/prism-" + language);
             }
             normalizedTokens = normalizeTokens(Prism.tokenize(block.node.textContent, Prism.languages[language]));
         }
         catch(err: any){
-            console.error(err.message+": \""+language+"\"");
+            console.error(err.message + ": \"" + language + "\"");
             normalizedTokens = normalizeTokens(Prism.tokenize(block.node.textContent, Prism.languages.javascript));
         }
 
@@ -76,7 +76,7 @@ function getDecorations({
             for (const token of tokens) {
                 const length = token.empty ? 0 : token.content.length
                 if (!length) {
-                continue
+                    continue
                 }
 
                 const end = start + length
@@ -174,7 +174,7 @@ function shouldRebuildDecorations(
     return true
   }
 
-  // OR transaction has changes that completely encapsulte a node
+  // OR transaction has changes that completely encapsulate a node
   // (for example, a transaction that affects the entire document).
   // Such transactions can happen during collab syncing via y-prosemirror, for example.
   return transaction.steps.some((step) => {
