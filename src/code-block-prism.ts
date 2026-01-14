@@ -7,12 +7,6 @@ export interface CodeBlockPrismOptions extends CodeBlockOptions {
 }
 
 export const CodeBlockPrism = CodeBlock.extend<CodeBlockPrismOptions>({
-  addOptions() {
-    return {
-      ...this.parent?.(),
-      defaultLanguage: null,
-    }
-  },
 
   addProseMirrorPlugins() {
     return [
